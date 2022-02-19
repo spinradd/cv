@@ -232,6 +232,7 @@ p {
   -moz-border-radius: 8;
   border-radius: 8px;
   font-family: "Montserrat", serif;
+  display:inline-block;
   color: #152D35;
   font-size: 20px;
   padding: 10px 20px 10px 20px;
