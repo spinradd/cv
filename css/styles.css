@@ -1,4 +1,5 @@
 
+
 :root{
     --space: 30px;
 }
@@ -56,6 +57,7 @@ body {
     margin: 6px 0;
     border-radius: 10px;
 }
+
 
 .content {
     background-color: transparent;
@@ -231,11 +233,13 @@ p {
   -webkit-border-radius: 8;
   -moz-border-radius: 8;
   border-radius: 8px;
+  min-width:100px;
+  max-width: 100px;
+  text-align: center;
   font-family: "Montserrat", serif;
-  display:inline-block;
   color: #152D35;
   font-size: 20px;
-  padding: 10px 20px 10px 20px;
+  padding: 10px 10px 10px 10px;
   border: solid #01080d 1px;
   text-decoration: none;
   position: relative;
@@ -250,6 +254,21 @@ p {
   background-image: -o-linear-gradient(top, #74dea2, #4aa879);
   background-image: linear-gradient(to bottom, #74dea2, #4aa879);
   text-decoration: none;
+  color: #ccec9a;
+  cursor:pointer;
+
+}
+
+.ul1 {
+    display: in-line;
+    padding-top: 30px;
+    margin: 0px;
+}
+
+ul {
+    display: in-line;
+    padding: 5px 0px 5px 0px;
+    margin: 0px;
 }
 
 .bottom_container {
@@ -299,4 +318,3 @@ p {
 .icons {
     margin: 0px;
 }
-
