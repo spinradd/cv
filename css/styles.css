@@ -65,6 +65,11 @@ body {
     display: none;
     overflow: hidden;
 }
+.header-link {text-decoration: none;}
+.header-link:visited { text-decoration: none; color:#345B63; }
+.header-link:hover { text-decoration: none; color:#498d76; }
+.header-link:focus { text-decoration: none; color:#345B63; }
+.header-link:active { text-decoration: none; color:#345B63 }
 
 h1 {
     font-family: "Oswald", serif;
@@ -80,6 +85,7 @@ h2 {
     margin: 0px auto;
     color: #345B63;
     font-size: 2.5rem;
+
 }
 
 h3 {
