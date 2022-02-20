@@ -6,7 +6,7 @@
 
 body {
     margin: 0px auto 0 auto;
-    background-color: #345B63;
+    background-color: #D4ECDD;
     font-color: 152D35;
     text-align: center;
     font-family: "Montserrat", serif;
@@ -280,6 +280,8 @@ ul {
 .bottom_container {
     margin: var(--space) auto 0 auto;
     color: #D4ECDD;
+    background-color: #345B63;
+    padding-top: 30px;
 }
 
 .footer-link {
