@@ -1,132 +1,347 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" content="David Spinrad">
-    <title>david spinrad</title>
-    <link rel="icon" href="images/favicon.ico">
-    <link rel="stylesheet" href="css/styles.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Oswald:wght@306&display=swap" rel="stylesheet"></head>
-<body>
 
-<!-- color pallete link: https://colorhunt.co/palette/d4ecdd345b63152d35112031 -->
 
-    <div class="top_container">
-         <div class="menu_bar">
-         <div class="collapsible" onclick="x_func(this)">
-          <div class="bar1"></div>
-          <div class="bar2"></div>
-          <div class="bar3"></div>
-        </div>
-         <div class="content">
-            <ul class="ul1" ><a ref=href="index.html" onclick="window.open('index.html', '_self');"><button class="btn">Home</button></a></ul>
-             <ul><a ref=href="work_history.html" onclick="window.open('work_history.html', '_self');"><button class="btn">Work</button></a></ul>
-             <ul><a ref=href="code.html" onclick="window.open('code.html', '_self');"><button class="btn">Code</button></a></ul>
-             <ul><a ref="mailto:spinradd@email.com"><button class="btn">Contact</button></a></ul>
-        </div>
-    </div>
-        <h1>David Spinrad</h1>
-        <h2 class="sub_title">engineer</h2>
-        <h2 class="sub_title">programmer</h2>
-        <div class="thought_container">
-                <img src="images/bubble.png" class="bubble_pic" alt="">
-            <div class="trio_container">
-                <div class="trio_container_2">
-                    <img src="images/mindset.png" class="trio_pic" alt="">
-                    <img src="images/developing.png" class="trio_pic" alt="">
-                    <img src="images/atom.png" class="trio_pic" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="middle_container">
-      <div class="profile_container">
-          <img src="images/Profile Picture.png" class="profile_pic" alt="">
-      </div>
-        <h2>Hello</h2>
-        <p class="bio">Im an industrial engineer and aspiring software developer. I've made some pretty cool things.</p>
-      <hr>
-      <div class="skills">
-        <h2>Current Projects</h2>
-        <div class="skill_row">
-            <div class="skill_pic_container_1">
-                <img class="skill_pic" src="images/link.png" alt="">
-            </div>
-        <h3>Machine Learning</h3>
-          <p>For my senior thesis, I am utilizing machine learning algorithms to optimize synthesis
-              for 2-D Molybdenum Disulfide. </p>
-        </div>
-        <div class="skill_row">
-            <div class="skill_pic_container_2">
-                <img class="skill_pic" src="images/code.png" alt="">
-            </div>
-            <a class="header-link" href="https://github.com/spinradd/PythonProjects" target="_blank">Python Applications</a>
-              <p>During my python studies, I have made apps for creating music playlists, finding flight deals,
-                  playing classic games, and more!</p>
-        </div>
-          <div class="skills">
-            <h2>Past Projects</h2>
-            <div class="skill_row">
-                <div class="skill_pic_container_1">
-                    <img class="skill_pic" src="images/excel.png" alt="">
-                </div>
-           <a class="header-link" href="https://github.com/spinradd/Tracking-and-Trending" target="_blank">Trending Application</a>
-              <p>I created a VBA application that tracks, trends, and reports facilities data. The application can
-                  create charts, calendars, and powerpoints based on logged data.</p>
-            </div>
-            <div class="skill_row">
-                <div class="skill_pic_container_2">
-                    <img class="skill_pic" src="images/crypto.png" alt="">
-                </div>
-            <a class="header-link" href="https://github.com/spinradd/Crypto-Reporting" target="_blank">Crypto Tax Application</a>
-                  <p>In response to inaccessible crypto tax software, I created an excel application capable of
-                      creating yearly tax reports based on logged transactions. The spreadsheet can distinguish between
-                      bought and mined assets.</p>
-            </div>
-          </div>
-      </div>
-      <hr>
-      <div class="contact_me">
-        <h2 style="padding-bottom: 60px">Get In Touch</h2>
-        <h3 style="line-height: 2">I am currently looking for opportunities in the greater Boston area.</h3>
-        <a class="btn" href="mailto:spinradd@email.com">Contact</a>
-      </div>
-    </div>
-    <div class="bottom_container">
-      <a class="footer-link" href="https://www.linkedin.com/in/david-spinrad-1a4544199/" target="_blank">LinkedIn</a>
-      <a class="footer-link" href="https://github.com/spinradd/" target="_blank">Github</a>
-      <p class="copyright"> © 2022 David Spinrad</p>
-        <div class="attributions">
-                <p class="icons">Icons made by <a class="attribution_link" href="https://www.flaticon.com/authors/eucalyp" target="_blank">Eucalyp</a>,
-                    <a class="attribution_link" href="https://www.flaticon.com/authors/iconixar" target="_blank">iconixar</a>,
-                    and <a class="attribution_link" href="https://www.flaticon.com/authors/zero_wing" target="_blank">zero_wing</a> with
-                    <a class="attribution_link" href="https://www.flaticon.com/" target="_blank">www.flaticon.com</a>, also MS word</p>
-        </div>
-    </div>
-
-<script>
-var coll = document.getElementsByClassName("collapsible");
-var i;
-
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display = "none";
-    } else {
-      content.style.display = "block";
-    }
-  });
+:root{
+    --space: 30px;
 }
-</script>
-<script>
-function x_func(x) {
-  x.classList.toggle("change");
+
+body {
+    margin: 0px auto 0 auto;
+    background-color: #D4ECDD;
+    font-color: 152D35;
+    text-align: center;
+    font-family: "Montserrat", serif;
+    overflow-x: hidden;
+    font-size: 1.5rem;
 }
-</script>
+
+.menu_bar {
+    position: fixed;
+    right: 0px;
+    margin: 10px 10px;
+    z-index: 10;
+}
 
 
-</body>
-</html>
+.bar1, .bar2, .bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: #333;
+  margin: 6px 0;
+  transition: 0.4s;
+  border-radius: 10px;
+}
+
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {opacity: 0;}
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
+.collapsible {
+    width: 35px;
+    position: absolute;
+    right: 0px;
+    right: 0px;
+}
+
+.menu_icon {
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+    border-radius: 10px;
+}
+
+
+.content {
+    background-color: transparent;
+    padding: 25px 0px;
+    display: none;
+    overflow: hidden;
+}
+.header-link {text-decoration: none;}
+.header-link:visited { text-decoration: none; color:#345B63; }
+.header-link:hover { text-decoration: none; color:#498d76; }
+.header-link:focus { text-decoration: none; color:#345B63; }
+.header-link:active { text-decoration: none; color:#345B63 }
+
+
+
+
+
+h1 {
+    font-family: "Oswald", serif;
+    padding: 70px 0px var(--space) 0px;
+    color: #152D35;
+    font-size: 6rem;
+    margin: 0px;
+}
+
+
+h2 {
+    font-family: "Montserrat", serif;
+    margin: 0px auto;
+    color: #345B63;
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-family: "Montserrat", serif;
+    margin-top: 0;
+    color: #345B63;
+}
+
+.header-link {
+    color: #345B63;
+    font-family: "Montserrat", serif;
+    display: block;
+    font-size: 1.17em;
+    margin-before: 1em;
+    margin-after: 1em;
+    margin-start: 0;
+    margin-end: 0;
+    font-weight: bold;
+}
+
+.header-link:hover {
+    color: #498d76;
+}
+
+.pro {
+    text-decoration: underline;
+}
+
+.top_container {
+    position: relative;
+    left:0px;
+    top: 0px;
+    margin: 0px;
+    padding-top: 10px;
+    padding-bottom: 0px;
+    background-color: #D4ECDD;
+}
+
+hr {
+    border-style:none;
+    border-top-style: dotted;
+    border-color: #B8CFC1;
+    border-width: 7px;
+    width: 10%;
+    margin: 75px auto 75px auto;
+}
+
+
+.sub_title {
+    padding-bottom: 2px;
+    font-family: "Montserrat", serif;
+    margin-top: 0px;
+    font-size: 2.5rem;
+    padding: 0px;
+    color: #345B63;
+}
+
+.thought_container {
+    display: grid;
+    height: auto;
+    position: relative;
+    justify-items: center;
+    padding-top: var(--space);
+}
+
+.bubble_pic {
+    width: 400px;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.trio_container {
+    grid-column: 1;
+    grid-row: 1;
+    height: auto;
+    margin:auto;
+}
+
+.trio_container_2 {
+    position: relative;
+    bottom: 90px;
+}
+
+.trio_pic {
+    display: inline;
+    width: 100px;
+    padding: 55px 0px 40px 0px;
+}
+
+.middle_container {
+    padding: 100px 0px var(--space) 0px;
+    width: 100%;
+    position: relative;
+    background-color: #D4ECDD;
+}
+
+.profile_container {
+    padding: 0px;
+    height: auto;
+    background-color: #D4ECDD;
+    padding-bottom:var(--space);
+}
+
+.profile_pic{
+    background-color: #D4ECDD;
+    width: 225px;
+}
+
+p {
+ line-height: 2;
+}
+
+.bio {
+    width: 30%;
+    padding: 0px;
+    margin: 60px auto;
+    text-align: center;
+}
+
+.skills {
+    margin: 0px 0px;
+}
+
+.skill_row {
+    width: 50%;
+    height: auto;
+    margin: 60px auto;
+    text-align: left;
+    line-height: 2;
+}
+
+.skill_pic_container_1 {
+    display: block;
+    height: auto;
+    float: left;
+    margin-right: 30px;
+}
+
+.skill_pic_container_2 {
+    height: auto;
+    float: right;
+    margin-left: 30px;
+}
+
+.skill_text_bottom {
+    padding-bottom: 20px;
+}
+
+.skill_pic {
+    width: 200px;
+}
+
+.contact_me {
+    width: 50%;
+    height: auto;
+    margin: 0px auto;
+    line-height: 1;
+}
+
+.btn {
+  background: #D4ECDD;
+  background-image: -webkit-linear-gradient(top, #D4ECDD, #6ab085);
+  background-image: -moz-linear-gradient(top, #D4ECDD, #6ab085);
+  background-image: -ms-linear-gradient(top, #D4ECDD, #6ab085);
+  background-image: -o-linear-gradient(top, #D4ECDD, #6ab085);
+  background-image: linear-gradient(to bottom, #D4ECDD, #6ab085);
+  -webkit-border-radius: 8;
+  -moz-border-radius: 8;
+  border-radius: 8px;
+  min-width:100px;
+  max-width: 100px;
+  text-align: center;
+  font-family: "Montserrat", serif;
+  color: #152D35;
+  font-size: 20px;
+  padding: 10px 10px 10px 10px;
+  border: solid #01080d 1px;
+  text-decoration: none;
+  position: relative;
+  bottom:0;
+}
+
+.btn:hover {
+  background: #74dea2;
+  background-image: -webkit-linear-gradient(top, #74dea2, #4aa879);
+  background-image: -moz-linear-gradient(top, #74dea2, #4aa879);
+  background-image: -ms-linear-gradient(top, #74dea2, #4aa879);
+  background-image: -o-linear-gradient(top, #74dea2, #4aa879);
+  background-image: linear-gradient(to bottom, #74dea2, #4aa879);
+  text-decoration: none;
+  color: #ccec9a;
+  cursor:pointer;
+
+}
+
+.ul1 {
+    display: in-line;
+    padding-top: 30px;
+    margin: 0px;
+}
+
+ul {
+    display: in-line;
+    padding: 5px 0px 5px 0px;
+    margin: 0px;
+}
+
+.bottom_container {
+    margin: var(--space) auto 0 auto;
+    color: #D4ECDD;
+    background-color: #345B63;
+    padding-top: 30px;
+}
+
+.footer-link {
+    color: #D4ECDD;
+    font-family: "Montserrat", serif;
+    margin: 0px 10px 50px 10px;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.footer-link:hover {
+    color: white;
+}
+
+.copyright {
+    font-size: .75rem;
+    margin: 25px auto 5px auto;
+    padding: 0px;
+    line-height: 1;
+}
+
+.attributions {
+    left: 0px;
+    bottom: 0px;
+    color: #D4ECDD;
+    margin: 0px auto;
+    font-size: .75rem;
+    line-height: 1;
+}
+
+.attribution_link {
+    color: #D4ECDD;
+    font-size: .75rem;
+    text-decoration: none;
+    font-family: "Montserrat, serif;
+}
+
+.attribution_link:hover {
+    color: white;
+}
+
+.icons {
+    margin: 0px;
+}
