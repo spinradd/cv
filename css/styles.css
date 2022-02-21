@@ -92,7 +92,7 @@ h3 {
 .header-link {
     color: #345B63;
     font-family: "Montserrat", serif;
-    display: block;
+    display: in-line;
     font-size: 1.0 em;
     margin-before: 1em;
     margin-after: 1em;
