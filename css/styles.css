@@ -92,18 +92,19 @@ h3 {
 .header-link {
     color: #345B63;
     font-family: "Montserrat", serif;
-    display: in-line;
     font-size: 1.0 em;
-    margin-before: 1em;
-    margin-after: 1em;
-    margin-start: 0;
-    margin-end: 0;
     font-weight: bold;
     text-decoration: none;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    padding: 1.5em;
+    margin: -1.5em;
 }
 
 .header-link:hover {
     color: #498d76;
+    text-decoration: underline;
 }
 
 .pro {
