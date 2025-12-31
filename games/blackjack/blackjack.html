@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Blackjack (Python)</title>
+    <style>
+        body { font-family: monospace; }
+        #console {
+            background: #111;
+            color: #0f0;
+            padding: 10px;
+            height: 400px;
+            overflow-y: auto;
+            overflow-x: auto;
+            margin: 0;
+        }
+        #input { width: 360px; }
+    </style>
+</head>
+<body>
+
+<h3>Blackjack (Python)</h3>
+
+<pre id="console"></pre>
+<input id="input" placeholder="Enter input..." autofocus />
+<button id="submit" onclick="sendInput()">Submit</button>
+
+<script src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script>
+<script>
+    let awaitingInput = false;
+    let pyodide;
+    let inputResolver = null;
+    const inputQueue = [];
+
+    globalThis.__clear_console__ = () => {
+        document.getElementById("console").textContent = "";
+    };
+
+    function setInputEnabled(enabled) {
+        const box = document.getElementById("input");
+        const btn = document.getElementById("submit");
+        box.disabled = !enabled;
+        btn.disabled = !enabled;
+        awaitingInput = enabled;
+        if (enabled) box.focus();
+    }
+
+    const decoder = new TextDecoder("utf-8");
+
+    function append(chunk) {
+        const c = document.getElementById("console");
+
+        // Pyodide may pass a string OR a Uint8Array/Array of bytes.
+        let s;
+        if (typeof chunk === "string") {
+            s = chunk;
+        } else if (chunk instanceof Uint8Array) {
+            s = decoder.decode(chunk);
+        } else if (Array.isArray(chunk)) {
+            s = decoder.decode(new Uint8Array(chunk));
+        } else {
+            s = String(chunk);
+        }
+
+        // Normalize CRLF/CR -> LF so newlines render correctly
+        s = s.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+
+        c.textContent += s;
+        c.scrollTop = c.scrollHeight;
+    }
+
+    async function main() {
+        pyodide = await loadPyodide();
+
+        pyodide.setStdout({
+            write: (t) => { append(t); return t.length; }
+        });
+        pyodide.setStderr({
+            write: (t) => { append(t); return t.length; }
+        });
+
+        pyodide.globals.set("__js_ainput__", () => {
+            // If the user already typed something, consume it immediately
+            if (inputQueue.length > 0) {
+                return Promise.resolve(inputQueue.shift());
+            }
+
+            // Otherwise wait for the next submission
+            setInputEnabled(true);
+            return new Promise(resolve => {
+                inputResolver = (v) => {
+                    setInputEnabled(false);
+                    resolve(v);
+                };
+            });
+        });
+
+        try {
+            const resp = await fetch("./main.py");
+            if (!resp.ok) throw new Error(`Failed to fetch main.py: ${resp.status} ${resp.statusText}`);
+            const code = await resp.text();
+            await pyodide.runPythonAsync(code); // supports top-level await in main.py
+        } catch (e) {
+            append("\n[ERROR]\n" + (e?.stack || String(e)) + "\n");
+        }
+
+        setInputEnabled(false);
+    }
+
+    function sendInput() {
+        const box = document.getElementById("input");
+        const raw = box.value;
+        const val = raw.trim();     // trim whitespace
+        if (val.length === 0) return; // ignore empty submits
+
+        box.value = "";
+
+        // Simulate pressing Enter once (do NOT echo the typed value)
+        append("\n");
+
+        if (inputResolver) {
+            const resolve = inputResolver;
+            inputResolver = null;
+            resolve(val);
+        } else {
+            // If user submits early, queue it
+            inputQueue.push(val);
+        }
+    }
+
+
+    document.getElementById("input").addEventListener("keydown", (e) => {
+        if (e.key === "Enter") sendInput();
+    });
+
+    main();
+</script>
+
+</body>
+</html>
