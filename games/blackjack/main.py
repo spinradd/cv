@@ -12,8 +12,6 @@ logo = """
 """
 
 import random
-import os, platform
-import asyncio
 import sys
 
 async def ainput(prompt: str = "") -> str:

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Blackjack</title>
+    <title>Hangman</title>
     <style>
         body { font-family: monospace; }
         #console {
@@ -92,6 +92,14 @@
                 };
             });
         });
+
+        const wordsResp = await fetch("./WordsFile.txt");
+        if (!wordsResp.ok) {
+            throw new Error(`Failed to fetch WordsFile.txt: ${wordsResp.status} ${wordsResp.statusText}`);
+        }
+        const wordsText = await wordsResp.text();
+        pyodide.FS.writeFile("WordsFile.txt", wordsText);
+
 
         try {
             const resp = await fetch("./main.py");
