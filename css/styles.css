@@ -214,14 +214,14 @@ p {
     line-height: 2;
 }
 
-.skill_pic_container_1 {
+.skill_pic_left {
     display: block;
     height: auto;
     float: left;
     margin-right: 30px;
 }
 
-.skill_pic_container_2 {
+.skill_pic_right {
     height: auto;
     float: right;
     margin-left: 30px;
