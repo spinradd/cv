@@ -162,8 +162,8 @@ async def play_blackjack():
     clear()
     print(logo)
     play = await get_play()
-    balance = await get_balance("balance")
     iteration = 0
+    balance = 0
     bet = []
     while play == "yes":
 
@@ -172,6 +172,7 @@ async def play_blackjack():
             print(logo)
             print(f'Your current balance is {balance}')
         else:
+            balance = await get_balance("balance")
             print(f'> {balance}')
         bet = []
         initial_bet = await get_balance("bet")
@@ -301,4 +302,3 @@ async def play_blackjack():
 
 if __name__ == "__main__":
     await play_blackjack()
-
