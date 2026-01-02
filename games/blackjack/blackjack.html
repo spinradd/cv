@@ -4,24 +4,48 @@
     <meta charset="utf-8">
     <title>Blackjack</title>
     <style>
-        body { font-family: monospace; }
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: monospace;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* prevents iframe page itself from scrolling */
+        }
+
         #console {
             background: #111;
             color: #0f0;
             padding: 10px;
-            height: 400px;
-            overflow-y: auto;
-            overflow-x: auto;
-            margin: 0;
+            flex: 1;              /* take remaining height */
+            overflow: auto;       /* console scrolls, not the page */
+            white-space: pre-wrap;
         }
-        #input { width: 360px; }
+
+        .input-row {
+            display: flex;
+            gap: 8px;
+            padding: 10px;
+            background: #000;     /* optional */
+        }
+
+        #input {
+            flex: 1;
+            min-width: 0;
+        }
     </style>
 </head>
 <body>
 
 <pre id="console"></pre>
-<input id="input" placeholder="Enter input..." autofocus />
-<button id="submit" onclick="sendInput()">Submit</button>
+
+<div class="input-row">
+    <input id="input" placeholder="Enter input..." />
+    <button id="submit" onclick="sendInput()">Submit</button>
+</div>
 
 <script src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script>
 <script>
@@ -29,6 +53,11 @@
     let pyodide;
     let inputResolver = null;
     const inputQueue = [];
+
+    let userInteracted = false;
+    window.addEventListener("pointerdown", () => { userInteracted = true; }, { once: true });
+    window.addEventListener("keydown", () => { userInteracted = true; }, { once: true });
+
 
     globalThis.__clear_console__ = () => {
         document.getElementById("console").textContent = "";
@@ -40,7 +69,7 @@
         box.disabled = !enabled;
         btn.disabled = !enabled;
         awaitingInput = enabled;
-        if (enabled) box.focus();
+        if (enabled && userInteracted) box.focus();
     }
 
     const decoder = new TextDecoder("utf-8");
