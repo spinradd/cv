@@ -278,16 +278,16 @@ p {
 
 }
 
-.ul1 {
+.menu-box-item {
     display: in-line;
     padding-top: 30px;
     margin: 0px;
 }
 
 ul {
-    display: in-line;
-    padding: 5px 0px 5px 0px;
-    margin: 0px;
+    width: fit-content;
+    margin: 0 auto;
+    text-align: left;
 }
 
 .bottom_container {
